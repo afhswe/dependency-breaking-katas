@@ -2,7 +2,7 @@ namespace Org.Codecop.Dependencies.ExtractAndOverrideCall
 {
     public class Checkout
     {
-        public Receipt createReceipt(Money amount)
+        public Receipt CreateReceipt(Money amount)
         {
             var receipt = new Receipt();
             var vat = amount.Percentage(20);
@@ -10,10 +10,14 @@ namespace Org.Codecop.Dependencies.ExtractAndOverrideCall
             receipt.Amount = amount;
             receipt.Tax = vat;
             receipt.Total = amount.Add(vat);
-
-            ReceiptRepository.Store(receipt);
+            Store(receipt);
 
             return receipt;
+        }
+
+        protected virtual void Store(Receipt receipt)
+        {
+            ReceiptRepository.Store(receipt);
         }
     }
 }
