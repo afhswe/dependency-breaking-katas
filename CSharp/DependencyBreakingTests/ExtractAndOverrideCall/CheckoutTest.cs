@@ -17,13 +17,6 @@ namespace Org.Codecop.Dependencies.ExtractAndOverrideCall.Tests
             }
         }
         [Fact]
-<<<<<<< HEAD
-        public void Test3()
-        {
-            var checkout = new Checkout();
-            checkout.CreateReceipt(new Money(12));
-            Assert.NotNull(checkout);
-=======
         public void ReceiptContainsPriceTaxAndTotal()
         {
             var checkout = new TestCheckout();
@@ -45,7 +38,6 @@ namespace Org.Codecop.Dependencies.ExtractAndOverrideCall.Tests
             Assert.Contains("Total  ... 176,40", receipt.Format());
 
             Assert.True(checkout.WasCalled[0], "receipt not stored");
->>>>>>> add possible solution with working test
         }
     }
 }
