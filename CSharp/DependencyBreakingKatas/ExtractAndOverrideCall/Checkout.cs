@@ -5,11 +5,9 @@ namespace Org.Codecop.Dependencies.ExtractAndOverrideCall
         public Receipt CreateReceipt(Money amount)
         {
             var receipt = new Receipt();
-            var vat = amount.Percentage(20);
-
             receipt.Amount = amount;
-            receipt.Tax = vat;
-            receipt.Total = amount.Add(vat);
+            receipt.Tax = amount.Percentage(20);
+            receipt.Total = receipt.Amount.Add(receipt.Tax);
             Store(receipt);
 
             return receipt;
